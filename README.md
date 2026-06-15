@@ -38,6 +38,15 @@ The repository is organized as followed:
             - `graphs/` → Instances of the MaxCut problem used on the benchmark.
     - `PCE_parallel`: Contains the same as PCE but can parallelize DE using workers
 
+- `Resources`: Code used to obtain the computational resources graphics of the approaches
+    - `auxiliar` → Directory with necessary functions to compute the circuit depth and the number of parameters
+    - `depth_challengees_DoTS` → Functions that plots the depth of the circuits for the DoTS approach
+    - `depth_challengees_ORG` → Functions that plots the depth of the circuits for the Basic approach
+    - `params_challengees_DoTS` → Functions that plots the number of parameters of the circuits for the DoTS approach
+    - `params_challengees_ORG` → Functions that plots the number of parameters of the circuits for the Basic approach
+    - `qubits_challengees_DoTS` → Functions that plots the number of qubits of the circuits for the DoTS approach
+    - `qubits_challengees_ORG` → Functions that plots the number of qubits of the circuits for the Basic approach
+
 - `Numbers_test`: List of numbers that were used to factorise
 
 ### How to execute on HPC environment
