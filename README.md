@@ -1,1 +1,63 @@
 # CESGA-Quantum-Spain-PCE-Factorisation
+
+## Can PCE solve the factorisation problem via optimisation?
+
+In this repository you can find the code used to get the results shown in the paper Benchmark of Pauli Correlation Encoding for different optimisation problems.
+
+The repository is organized as followed:
+
+- `FAO_DoTS`: Code used for the execution of the DoTS approach.
+    - `Results_initial`: Directory with initial plots, results and the code used to obtain such plots and results
+    - `Results`: Directory with final plots, results and the code used to obtain such plots and results
+    - `PCE`: Code used to execute PSO, QDPSO and DE
+        - `init_cunqa.sh` to download dependencies
+        - `main_simul.sh` to execute the program
+        - `src/` contains all the main modules to prepare, execute and analyse the experiments, it includes:
+            - `auxiliar.py` → Auxiliar functions, including calculation of the number of qubits and coding of Hamiltonians.  
+            - `exe_experiments.py` → Generation of experiment combinations and automated execution.
+            - `grafica_csv.py` → Functions to generate figures based on the results shown on a CSV file. 
+            - `utilities.py` → Classical optimisation (Powell, COBYLA, Differential Evolution, etc.) and callbacks.
+            - `tensor_exp_value.py` → Tensor construction of the computational basis and qubits combinations.
+            - `circuit_builder.py` → Class used to build and compile parametric circuits. 
+            - `graphs/` → Instances of the MaxCut problem used on the benchmark.
+    - `PCE_parallel`: Contains the same as PCE but can parallelize DE and SaCeSS using workers
+
+- `FAO_ORG`: Code used for the execution of the Basic approach.
+    - `Results_initial`: Directory with initial plots, results and the code used to obtain such plots and results
+    - `Results`: Directory with final plots, results and the code used to obtain such plots and results
+    - `PCE`: Code used to execute PSO, QDPSO and DE
+        - `init_cunqa.sh` to download dependencies
+        - `main_simul.sh` to execute the program
+        - `src/` contains all the main modules to prepare, execute and analyse the experiments, it includes:
+            - `auxiliar.py` → Auxiliar functions, including calculation of the number of qubits and coding of Hamiltonians.  
+            - `exe_experiments.py` → Generation of experiment combinations and automated execution.
+            - `grafica_csv.py` → Functions to generate figures based on the results shown on a CSV file. 
+            - `utilities.py` → Classical optimisation (Powell, COBYLA, Differential Evolution, etc.) and callbacks.
+            - `tensor_exp_value.py` → Tensor construction of the computational basis and qubits combinations.
+            - `circuit_builder.py` → Class used to build and compile parametric circuits. 
+            - `graphs/` → Instances of the MaxCut problem used on the benchmark.
+    - `PCE_parallel`: Contains the same as PCE but can parallelize DE using workers
+
+- `Numbers_test`: List of numbers that were used to factorise
+
+### How to execute on HPC environment
+
+In order to execute a problem of your liking you must change the `main_simul.py` file to your desired problem specifications
+the following represents a given specification:
+
+```console
+Problema = ["Factorization"]                                     # Problem to solve
+Num = [821999]                                                   # Number to factorise
+Optimiz = ["DIFFERENTIALEVOLUTION"] #["PSO"] or ["QDPSO"]        # Classical algorithm optimizer, you can choose any optimizer you desire as long as their behavour is described on the `utilities.py` file
+k = [2]                                                          # PCE compression parameter
+
+```
+
+After chosing the desired problem to solve:
+
+1. Go to PCE directory on terminal `cd PCE`
+2. Execute the comand `source init_cunqa.sh`
+3. Execute the comand `sbatch main_simul.sh`, you can change the SBATCH specs inside this file
+
+
+
