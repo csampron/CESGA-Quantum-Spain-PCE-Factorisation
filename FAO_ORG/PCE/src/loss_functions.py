@@ -20,8 +20,13 @@ from src.auxiliar import kron_delta, alt_extract_primes
 
 import numpy as np
 import networkx as nx
-from cunqa.qutils import get_QPUs
+from cunqa.qpu import get_QPUs, run
 from cunqa.qjob import gather
+from cunqa.qiskit_deps.transpiler import transpiler
+
+from qiskit import QuantumCircuit, ClassicalRegister, transpile
+from qiskit_aer import AerSimulator
+
 
 
 
@@ -94,43 +99,39 @@ def loss_func_estimator(
     ### ----------------------------------------------------- ###
     ### 1. Bind de parámetros en cada circuito
     ### ----------------------------------------------------- ###
+
     bound_circuit_list = [
         qc.assign_parameters({param: val for param, val in zip(qc.parameters, x)})
         for qc in ansatz
     ]
-
+    
     ### ----------------------------------------------------- ###
     ### 2. Obtener counts y construir tensor de probabilidades
     ### ----------------------------------------------------- ###
-    if CUNQA == "Shots":
-        QPUs = get_QPUs(on_node=False, family=family_name)
-        if not QPUs:
-            raise ValueError("No se encontraron QPUs disponibles.")
+    if CUNQA in ["Shots", "Circuits"]:
 
-        shots_per_qpu = [n_shots // len(QPUs)] * len(QPUs)
-        shots_per_qpu[0] += n_shots % len(QPUs)
+        if CUNQA == "Shots":
+            if not QPUs:
+                raise RuntimeError("No se encontraron QPUs disponibles")
+            shots_per_qpu = [n_shots // len(QPUs)] * len(QPUs)
+            shots_per_qpu[0] += n_shots % len(QPUs)
+           
 
-        qjobs = [qpu.run(qc, shots=par, method="statevector")
-                 for par, qpu in zip(shots_per_qpu, QPUs)
-                 for qc in bound_circuit_list]
+            qjobs = [
+                run(qc, qpu, shots=shots, method="statevector")
+                for qpu, shots in zip(QPUs, shots_per_qpu)
+                for qc in bound_circuit_list
+            ]
+            results = gather(qjobs)
+            counts_list = combine_counts_shots(
+                results, n_qubits=num_qubits, n_circuits=3, num_qpus=len(QPUs)
+            )[1]
 
-        results = gather(qjobs)
-        counts_list = combine_counts_shots(
-            results,
-            n_qubits=num_qubits,
-            n_circuits=len(bound_circuit_list),
-            num_qpus=len(QPUs)
-        )[1]
+        else:  # Circuits
+            qjobs = [run(qc, qpu, shots=n_shots, method="statevector") for qc, qpu in zip(bound_circuit_list, QPUs)]
+            results = gather(qjobs)
 
-    elif CUNQA == "Circuits":
-        QPUs = get_QPUs(on_node=False, family=family_name)
-        if not QPUs:
-            raise ValueError("No se encontraron QPUs disponibles.")
-
-        qjobs = [qpu.run(qc, shots=n_shots, method="statevector")
-                 for qc, qpu in zip(bound_circuit_list, QPUs)]
-        results = gather(qjobs)
-        counts_list = combine_counts_circuits(results, n_qubits=num_qubits)[1]
+            counts_list = combine_counts_circuits(results, n_qubits=num_qubits)[1]
 
     elif CUNQA == "Simulation":
 
@@ -152,7 +153,6 @@ def loss_func_estimator(
         probs_z = np.abs(state_z) ** 2
 
         # Ejecutar X e Y sobre statevector de Z
-        from qiskit import QuantumCircuit
 
         # Ejecutar sobre initial_statevector=state_z
         # X: aplicar H
@@ -182,6 +182,7 @@ def loss_func_estimator(
 
         # Para probabilities exactas, n_shots debe ser 1
         n_shots = 1
+
 
     p_t = build_probability_tensor(counts_list, n_shots, num_qubits)
 
