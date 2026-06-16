@@ -23,7 +23,7 @@
           <img src="docs/source/_static/logo_cesga_negro.png" width="30%" style="display: inline-block;" alt="CESGA logo">
         </picture>
       </a>
-      <span style="display:inline-block; width:40px;"></span>
+      <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="40">
       <a href="https://quantumspain-project.es/">
         <picture>
           <source media="(prefers-color-scheme: dark)" srcset="docs/source/_static/QuantumSpain_logo_white.png" width="240" height="50">
