@@ -38,7 +38,7 @@
 
 #
 
-In this repository you can find the code used to get the results shown in the paper Can PCE solve the factorisation problem via optimisation?.
+In this repository you can find the code used to get the results shown in the paper <i>Can PCE solve the factorisation problem via optimisation?</i>
 
 The repository is organized as followed:
 
