@@ -7,41 +7,37 @@
   <a>
     <img src="https://img.shields.io/badge/python-3.9-blue.svg" alt="Python version" height="18">
   </a>
+  <a href="cesga-quantum-spain.github.io/cunqa/">
+    <img src="https://img.shields.io/badge/docs-blue.svg" alt="Python version" height="18">
+  </a>
 </p>
 
 <br>
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center" width="300">
-        <a href="https://www.cesga.es/">
-          <picture>
-            <source media="(prefers-color-scheme: dark)" srcset="docs/source/_static/logo_cesga_blanco.png">
-            <source media="(prefers-color-scheme: light)" srcset="docs/source/_static/logo_cesga_negro.png">
-            <img src="docs/source/_static/logo_cesga_negro.png" width="200" alt="CESGA logo">
-          </picture>
-        </a>
-      </td>
-
-      <td width="60"></td>
-
-      <td align="center" width="300">
-        <a href="https://quantumspain-project.es/">
-          <picture>
-            <source media="(prefers-color-scheme: dark)" srcset="docs/source/_static/QuantumSpain_logo_white.png">
-            <source media="(prefers-color-scheme: light)" srcset="docs/source/_static/QuantumSpain_logo_color.png">
-            <img src="docs/source/_static/QuantumSpain_logo_white.png" width="240" alt="QuantumSpain logo">
-          </picture>
-        </a>
-      </td>
-    </tr>
-  </table>
-</div>
+<p>
+    <div align="center">
+      <a href="https://www.cesga.es/">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="docs/source/_static/logo_cesga_blanco.png" width="200" height="50">
+          <source media="(prefers-color-scheme: light)" srcset="docs/source/_static/logo_cesga_negro.png" width="200" height="50">
+          <img src="docs/source/_static/logo_cesga_negro.png" width="30%" style="display: inline-block;" alt="CESGA logo">
+        </picture>
+      </a>
+      <a href="https://quantumspain-project.es/">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="docs/source/_static/QuantumSpain_logo_white.png" width="240" height="50">
+          <source media="(prefers-color-scheme: light)" srcset="docs/source/_static/QuantumSpain_logo_color.png" width="240" height="50">
+          <img src="docs/source/_static/QuantumSpain_logo_white.png" width="30%" style="display: inline-block;" alt="QuantumSpain logo">
+        </picture>
+      </a>
+    </div>
+</p>
 
 
 
-In this repository you can find the code used to get the results shown in the paper Can PCE solve the factorisation problem via optimisation?
+#
+
+In this repository you can find the code used to get the results shown in the paper Can PCE solve the factorisation problem via optimisation?.
 
 The repository is organized as followed:
 
