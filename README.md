@@ -22,7 +22,11 @@
           <source media="(prefers-color-scheme: light)" srcset="docs/source/_static/logo_cesga_negro.png" width="200" height="50">
           <img src="docs/source/_static/logo_cesga_negro.png" width="30%" style="display: inline-block;" alt="CESGA logo">
         </picture>
-      </a><a href="https://quantumspain-project.es/">
+      </a>
+      
+      <span style="display:inline-block; width:40px;"></span>
+
+      <a href="https://quantumspain-project.es/">
         <picture>
           <source media="(prefers-color-scheme: dark)" srcset="docs/source/_static/QuantumSpain_logo_white.png" width="240" height="50">
           <source media="(prefers-color-scheme: light)" srcset="docs/source/_static/QuantumSpain_logo_color.png" width="240" height="50">
