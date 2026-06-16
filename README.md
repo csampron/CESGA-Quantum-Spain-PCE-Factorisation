@@ -11,31 +11,27 @@
 
 <br>
 
-<div style="display: flex; justify-content: center; align-items: center; gap: 40px;">
-  
-  <a href="https://www.cesga.es/">
+<div align="center">
+  <a href="https://www.cesga.es/" style="margin-right: 40px;">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="docs/source/_static/logo_cesga_blanco.png">
-      <source media="(prefers-color-scheme: light)" srcset="docs/source/_static/logo_cesga_negro.png">
-      <img src="docs/source/_static/logo_cesga_negro.png" width="30%" alt="CESGA logo">
+      <img src="docs/source/_static/logo_cesga_negro.png"
+           width="30%"
+           alt="CESGA logo">
     </picture>
   </a>
 
   <a href="https://quantumspain-project.es/">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="docs/source/_static/QuantumSpain_logo_white.png">
-      <source media="(prefers-color-scheme: light)" srcset="docs/source/_static/QuantumSpain_logo_color.png">
-      <img src="docs/source/_static/QuantumSpain_logo_white.png" width="30%" alt="QuantumSpain logo">
+      <img src="docs/source/_static/QuantumSpain_logo_white.png"
+           width="30%"
+           alt="QuantumSpain logo">
     </picture>
   </a>
-
 </div>
 
 
 
-## Can PCE solve the factorisation problem via optimisation?
-
-In this repository you can find the code used to get the results shown in the paper Can PCE solve the factorisation problem via optimisation?.
+In this repository you can find the code used to get the results shown in the paper Can PCE solve the factorisation problem via optimisation?
 
 The repository is organized as followed:
 
