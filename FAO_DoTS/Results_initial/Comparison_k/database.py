@@ -5,7 +5,7 @@ import numpy as np
 import re
 
 # === CONFIGURATION ===
-BASE_DIR = "/mnt/netapp1/Store_CESGA/home/cesga/falonso/z_FAO/FAO_DoTS/Results_intial/Comparison_k/Resultados/Factorization"
+BASE_DIR = "/mnt/netapp1/Store_CESGA/home/cesga/falonso/z_FAO/FAO_DoTS/Results_initial/Comparison_k/Resultados/Factorization"
 DB_NAME = "Factorization_results.db"
 
 # === CREATE DATABASE ===

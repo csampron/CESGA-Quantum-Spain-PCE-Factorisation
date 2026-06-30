@@ -16,7 +16,6 @@ from src import qpso_simple
 import numpy as np
 import csv
 import os
-fr
 
 from functools import partial
 
